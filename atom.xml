@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
+
   <title><![CDATA[York's Home]]></title>
   <link href="ysmintor.github.io/atom.xml" rel="self"/>
   <link href="ysmintor.github.io/"/>
-  <updated>2019-04-04T23:54:44+08:00</updated>
+  <updated>2019-04-04T23:57:50+08:00</updated>
   <id>ysmintor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
+    
   </author>
-  <generator uri="http://www.coderforart.com/">CoderForArt</generator>
+  <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
     <title type="html"><![CDATA[New Test]]></title>
     <link href="ysmintor.github.io/15543931227403.html"/>
     <updated>2019-04-04T23:52:02+08:00</updated>
     <id>ysmintor.github.io/15543931227403.html</id>
-    <content type="html">
-<![CDATA[<p>这一篇文档主要是用于测试 Git Pages 显示效果的！如果效果显示没有问题，那么说明使用起来的效果真是如自己所想的那样。</p>
+    <content type="html"><![CDATA[
+<p>这一篇文档主要是用于测试 Git Pages 显示效果的！如果效果显示没有问题，那么说明使用起来的效果真是如自己所想的那样。</p>
 
 <h2 id="toc_0">子标题</h2>
 
 <p>还是觉得可以的<br/>
 还是不要使用图片了</p>
-]]>
-    </content>
+
+]]></content>
   </entry>
   
   <entry>
@@ -31,12 +33,12 @@
     <link href="ysmintor.github.io/15543655705407.html"/>
     <updated>2019-04-04T16:12:50+08:00</updated>
     <id>ysmintor.github.io/15543655705407.html</id>
-    <content type="html">
-<![CDATA[<p>安装步骤如下<br/>
+    <content type="html"><![CDATA[
+<p>安装步骤如下<br/>
 首先需要处理相应的<br/>
 We all believe, that&#39;s might be right! oh~</p>
-]]>
-    </content>
+
+]]></content>
   </entry>
   
 </feed>
