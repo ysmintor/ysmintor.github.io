@@ -55,13 +55,15 @@
                 </div>
             </header>
             <div class="post-content" itemprop="articleBody">
-                <p>在一个现代化的时候，界面不好看的 <code>Eclipse</code> 和操作易用性相比而言更高的 <code>IntelliJ Idea</code>。而在进行 Hadoop 进行编程的时候，最基本的是需要导入相应的 Jar 包，而更为便宜的则是使用 Maven 来进行包的依赖管理，而本文则结合 Gradle 来处理引入最基本的 Hadoop 包，配置运行环境。</p>
+                <p>在一个现代化的编程时代，界面不好看的 <code>Eclipse</code> 和操作易用性相比而言更高的 <code>IntelliJ Idea</code>。而在进行 Hadoop 进行编程的时候，最基本的是需要导入相应的 Jar 包，而更为便捷的则是使用 Maven 来进行包的依赖管理，而本文则结合 Gradle 来处理引入最基本的 Hadoop 包，配置运行环境。</p>
 
 <h2 id="toc_0">新建一个 Gradle 项目</h2>
 
 <p>在新建时要选择 Gradle 项目，并在连接过程中自动下载 Gradle。<br/>
 <img src="media/15543961787923/1.new_gradle_projects.png" alt="Step1 new_gradle_projects"/><br/>
-在下一步中，要输入一个类似于下图的 GroupId，ArtifactId，这其实是基于 Maven 结构的，关于这个如何比较正确填写可以参考<br/>
+<span id="more"></span><!-- more --></p>
+
+<p>在下一步中，要输入一个类似于下图的 GroupId，ArtifactId，这其实是基于 Maven 结构的，关于这个如何比较正确填写可以参考<br/>
 <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">Guide to naming conventions on groupId, artifactId, and version</a><br/>
 <img src="media/15543961787923/2.group_artifactid_version.png" alt="Step2 group_artifactid_version" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;"/></p>
 
