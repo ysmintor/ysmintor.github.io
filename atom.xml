@@ -3,12 +3,127 @@
   <title><![CDATA[York's Home]]></title>
   <link href="ysmintor.github.io/atom.xml" rel="self"/>
   <link href="ysmintor.github.io/"/>
-  <updated>2019-04-05T18:51:06+08:00</updated>
+  <updated>2019-04-24T16:30:24+08:00</updated>
   <id>ysmintor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[Tensorflow Lazy Loading Problem]]></title>
+    <link href="ysmintor.github.io/15557651606995.html"/>
+    <updated>2019-04-20T20:59:20+08:00</updated>
+    <id>ysmintor.github.io/15557651606995.html</id>
+    <content type="html">
+<![CDATA[<p>lazy loading is a trap<br/>
+Tensorflow 中的 lazy loading 是什么？</p>
+
+<p>正常加载数据形式通常是如下所示</p>
+
+<pre><code class="language-python">x = tf.Variable(10, name=&#39;x&#39;)
+y = tf.Variable(20, name=&#39;y&#39;)
+z = tf.add(x, y)        # create the node before executing the graph
+
+writer = tf.summary.FileWriter(&#39;./graphs/normal_loading&#39;, tf.get_default_graph())
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for _ in range(10):
+        sess.run(z)
+writer.close()
+</code></pre>
+
+<p>而将 add 操作放到session 中便会产生 lazy loading 问题，即</p>
+
+<pre><code class="language-python">x = tf.Variable(10, name=&#39;x&#39;)
+y = tf.Variable(20, name=&#39;y&#39;)
+
+writer = tf.summary.FileWriter(&#39;./graphs/normal_loading&#39;, tf.get_default_graph())
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for _ in range(10):
+        sess.run(tf.add(x, y)) # someone decides to be clever to save one line of code
+writer.close()
+</code></pre>
+
+<p>在普通情况下相加，即第一段代码块所对应的 TensorBoard 如下图所示。<br/>
+<img src="media/15557651606995/15557654788021.jpg" alt="normal add" style="width:1024px;"/></p>
+
+<p>对应的 Protobuf</p>
+
+<pre><code class="language-javascript">node {
+  name: &quot;Add&quot;
+  op: &quot;Add&quot;
+  input: &quot;x/read&quot;
+  input: &quot;y/read&quot;
+  attr {
+    key: &quot;T&quot;
+    value {
+      type: DT_INT32
+    }
+  }
+}
+</code></pre>
+
+<p>上述第二段代码产生 lazy loading 对对应的示例如下图。<br/>
+<img src="media/15557651606995/15557656548298.jpg" alt="lazy loading" style="width:1095px;"/></p>
+
+<p>对应的 Probuff</p>
+
+<pre><code class="language-javascript">node {
+  name: &quot;Add_1&quot;
+  op: &quot;Add&quot;
+  ...
+  }
+...
+node {
+  name: &quot;Add_10&quot;
+  op: &quot;Add&quot;
+  ...
+}
+</code></pre>
+
+<p>可以明显地看到，生产 lazy loading 是在一个 Graph 中不断生成新的节点，而对应的 Protobuf 也从侧面印证了这一点，因此当数据量特别大的时候，可能会产生内存被点满的情况。</p>
+]]>
+    </content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Numpy Axes]]></title>
+    <link href="ysmintor.github.io/numpy-axes-explained.html"/>
+    <updated>2019-04-17T12:12:39+08:00</updated>
+    <id>ysmintor.github.io/numpy-axes-explained.html</id>
+    <content type="html">
+<![CDATA[<p>在 Numpy 中针对二维的情况，axis=0 就是向下沿着行方向，而 axis=1就是沿着列方向。具体示下图所示。<br/>
+<img src="media/15554743595239/15554745023882.jpg" alt="numpy coordinate"/></p>
+
+<p>在下述代码中，很奇怪为什么在<code>axis=0</code>时相加的按行，这里和直观感受不相符。</p>
+
+<pre><code class="language-python">np_array_2d = np.arange(0, 6).reshape([2,3])
+print(np_array_2d)
+[[0 1 2]
+ [3 4 5]]
+ np.sum(np_array_2d, axis = 0)
+ array([3, 5, 7]) # output
+</code></pre>
+
+<p>通过参考知道</p>
+
+<blockquote>
+<p>the axis parameter indicates which axis gets collapsed.</p>
+</blockquote>
+
+<p>因此是将行进行压缩，所以就是按各列来求和。以图来描述更直观。</p>
+
+<p><img src="media/15554743595239/15554747871377.jpg" alt="collapses"/></p>
+
+<p>同理可以知 axis=1是对各列压缩即在行上进行操作。</p>
+
+<p>参考链接<br/>
+<a href="https://www.sharpsightlabs.com/blog/numpy-axes-explained/">numpy axes explained</a></p>
+]]>
+    </content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[基于 Gradle 远程连接Hadoop HDFS编程]]></title>
