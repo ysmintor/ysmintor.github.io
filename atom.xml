@@ -3,12 +3,481 @@
   <title><![CDATA[York's Home]]></title>
   <link href="ysmintor.github.io/atom.xml" rel="self"/>
   <link href="ysmintor.github.io/"/>
-  <updated>2019-04-24T16:30:24+08:00</updated>
+  <updated>2019-06-03T22:20:21+08:00</updated>
   <id>ysmintor.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[KMeans 算法应用于 RGB 图像压缩]]></title>
+    <link href="ysmintor.github.io/15588646449009.html"/>
+    <updated>2019-05-26T17:57:24+08:00</updated>
+    <id>ysmintor.github.io/15588646449009.html</id>
+    <content type="html">
+<![CDATA[<p>KMeans算法可以应用于图像压缩，这种压缩实质上是一种有损压缩，实质上是将原本的色彩空间进行聚类，当所聚类的数据增长时，压缩后的质量也随之增加。</p>
+
+<p>关于聚类算法的的介绍和具体处理步聚就是在这里细讲，主要是讲解关于 KMeans 应用于图像压缩的实质和实现</p>
+
+<span id="more"></span><!-- more -->
+
+<p>从下图可以看到对一张原图使用 KMeans 使用聚类算法进行压缩时，首先要将原来的图像的所有像素放置到一个相同维度的容器，例如<code>Numpy</code>中的<code>Array</code>，然后进行进聚类，最终聚类的个数需要指定，聚类个数越大，压缩后的图像质量也就越好，但压缩比就降低，即压缩后的文件大小变化并不明显。注意在保存的压缩文件，压缩的图像坐标[x,y]所对应的并不是这个像素的 RGB 值，而是一个类似于指针的 Index。如下所的例子，原图所有像素聚类后的中心点有64个，那么可以用6bit 来表示（\(2^6=64\)），从例方向看每一列就对应一个聚类后的 RGB 颜色，压缩后的图像，图上的 K 就指向其中一列，表示取这个颜色，在恢复原图时就依据这个，把指向的具体的 RGB 值取出来。</p>
+
+<p>因此，压缩只是存储的压缩，在内存中进行显示的时候，还是需要还原，占用的内存空间和原图所占用的内存空间是一样大的。</p>
+
+<p><img src="media/15588646449009/15588648409263.jpg" alt="基本原理图"/></p>
+
+<p>下图是一张不同聚类个数后所得到的不同质量的图像<br/>
+<img src="media/15588646449009/15588656930757.jpg" alt="不同聚类值"/></p>
+
+<p>像下图这一张老虎图，是一张压缩后的图，一黑白图，注意这个位图不是彩色是因为像素代表的聚类后的颜色对应的<code>指针</code>。<br/>
+<img src="media/15588646449009/compressed_tiger.png" alt="compressed_tige"/></p>
+
+<hr/>
+
+<h1 id="toc_0">参考资料</h1>
+
+<p><a href="https://www.jianshu.com/p/594e9fc5db9a">Kmeans算法原理与应用-RGB图像压缩</a><br/>
+<a href="https://github.com/ysmintor/Image-compression-with-Kmeans-clustering">Image-compression-with-Kmeans-clustering</a></p>
+]]>
+    </content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[个人常用 Linux 命令]]></title>
+    <link href="ysmintor.github.io/15571128852826.html"/>
+    <updated>2019-05-06T11:21:25+08:00</updated>
+    <id>ysmintor.github.io/15571128852826.html</id>
+    <content type="html">
+<![CDATA[<p>uname, file, tar</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">xargs</td>
+<td style="text-align: left">将管道的输出内容合并成一行数据，使用空格分割</td>
+</tr>
+<tr>
+<td style="text-align: left">find .</td>
+<td style="text-align: left">grep txt</td>
+</tr>
+<tr>
+<td style="text-align: left">mount</td>
+<td style="text-align: left">挂载</td>
+</tr>
+<tr>
+<td style="text-align: left">mount /dev/cdrom /mnt/cdrom</td>
+<td style="text-align: left">挂载光驱到/mnt/cdrom 下</td>
+</tr>
+<tr>
+<td style="text-align: left">umount</td>
+<td style="text-align: left">解除挂载</td>
+</tr>
+<tr>
+<td style="text-align: left">umount /dev/cdrom</td>
+<td style="text-align: left">解除挂载</td>
+</tr>
+<tr>
+<td style="text-align: left">ps -Af</td>
+<td style="text-align: left">显示进程信息</td>
+</tr>
+<tr>
+<td style="text-align: left">cut -c num1-num2</td>
+<td style="text-align: left">剪切</td>
+</tr>
+<tr>
+<td style="text-align: left">cmd --help</td>
+<td style="text-align: left">查看帮助</td>
+</tr>
+<tr>
+<td style="text-align: left">man cmd</td>
+<td style="text-align: left">通过 查看 manual 文档</td>
+</tr>
+<tr>
+<td style="text-align: left">help</td>
+<td style="text-align: left">直接查看相应的文档</td>
+</tr>
+<tr>
+<td style="text-align: left">fdisk -l /dev/sda</td>
+<td style="text-align: left">查看分区表 sda1.2.3 是相应的分区</td>
+</tr>
+<tr>
+<td style="text-align: left">df</td>
+<td style="text-align: left">磁盘空间使用情况 disk free</td>
+</tr>
+<tr>
+<td style="text-align: left">df -ah</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">dd diskdump</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">dirname</td>
+<td style="text-align: left">查看文件夹)所在目录</td>
+</tr>
+<tr>
+<td style="text-align: left">basename</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">$(command)</td>
+<td style="text-align: left">命令</td>
+</tr>
+<tr>
+<td style="text-align: left">$ (xxx $(xxx))</td>
+<td style="text-align: left">嵌套命令</td>
+</tr>
+<tr>
+<td style="text-align: left">cd -P ..</td>
+<td style="text-align: left">Phisical, 非连接, 对于链接目录文件</td>
+</tr>
+<tr>
+<td style="text-align: left">cd -</td>
+<td style="text-align: left">后退</td>
+</tr>
+<tr>
+<td style="text-align: left">cd -n</td>
+<td style="text-align: left">后退到n步骤</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_0">重启</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">sudo reboot</td>
+<td style="text-align: left">重启</td>
+</tr>
+<tr>
+<td style="text-align: left">sudo shutdown -P now</td>
+<td style="text-align: left">关机，-p 关电源 -r reboot</td>
+</tr>
+<tr>
+<td style="text-align: left">sudo halt -p</td>
+<td style="text-align: left">关机，关电源</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_1">环境变量</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">echo $</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ $# -lt 1]</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ $# -gt 1]</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ -e xxx ]</td>
+<td style="text-align: left">是否存在</td>
+</tr>
+<tr>
+<td style="text-align: left">if[ $# -gt 1]</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ -d file ]</td>
+<td style="text-align: left">如果file文件存在且是一个目录则为真</td>
+</tr>
+<tr>
+<td style="text-align: left">a;b</td>
+<td style="text-align: left">多行命令一起写，无逻辑</td>
+</tr>
+<tr>
+<td style="text-align: left">(a;b)</td>
+<td style="text-align: left">组合命令，只在当前目录执行，不切换</td>
+</tr>
+<tr>
+<td style="text-align: left">ls -al; cd /usr/;pwd</td>
+<td style="text-align: left">相应命令</td>
+</tr>
+<tr>
+<td style="text-align: left">(ls -al;cd ~;pwd)</td>
+<td style="text-align: left">在当前目录执行</td>
+</tr>
+</tbody>
+</table>
+
+<p>The square brackets ( [ ] ) in the if statement above are actually a reference to the command test. </p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Operator</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">! EXPRESSION</td>
+<td style="text-align: left">The EXPRESSION is false.</td>
+</tr>
+<tr>
+<td style="text-align: left">-n STRING</td>
+<td style="text-align: left">The length of STRING is greater than zero.</td>
+</tr>
+<tr>
+<td style="text-align: left">-z STRING</td>
+<td style="text-align: left">The lengh of STRING is zero (ie it is empty).</td>
+</tr>
+<tr>
+<td style="text-align: left">STRING1 = STRING2</td>
+<td style="text-align: left">STRING1 is equal to STRING2</td>
+</tr>
+<tr>
+<td style="text-align: left">STRING1 != STRING2</td>
+<td style="text-align: left">STRING1 is not equal to STRING2</td>
+</tr>
+<tr>
+<td style="text-align: left">INTEGER1 -eq INTEGER2</td>
+<td style="text-align: left">INTEGER1 is numerically equal to INTEGER2</td>
+</tr>
+<tr>
+<td style="text-align: left">INTEGER1 -gt INTEGER2</td>
+<td style="text-align: left">INTEGER1 is numerically greater than INTEGER2</td>
+</tr>
+<tr>
+<td style="text-align: left">INTEGER1 -lt INTEGER2</td>
+<td style="text-align: left">INTEGER1 is numerically less than INTEGER2</td>
+</tr>
+<tr>
+<td style="text-align: left">-d FILE</td>
+<td style="text-align: left">FILE exists and is a directory.</td>
+</tr>
+<tr>
+<td style="text-align: left">-e FILE</td>
+<td style="text-align: left">FILE exists.</td>
+</tr>
+<tr>
+<td style="text-align: left">-r FILE</td>
+<td style="text-align: left">FILE exists and the read permission is granted.</td>
+</tr>
+<tr>
+<td style="text-align: left">-s FILE</td>
+<td style="text-align: left">FILE exists and it&#39;s size is greater than zero (ie. it is not empty).</td>
+</tr>
+<tr>
+<td style="text-align: left">-w FILE</td>
+<td style="text-align: left">FILE exists and the write permission is granted.</td>
+</tr>
+<tr>
+<td style="text-align: left">-x FILE</td>
+<td style="text-align: left">FILE exists and the execute permission is granted.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_2">Shell 变量</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">$0</td>
+<td style="text-align: left">The name of the Bash script.</td>
+</tr>
+<tr>
+<td style="text-align: left">$1 - $9</td>
+<td style="text-align: left">The first 9 arguments to the Bash script. (As mentioned above.)</td>
+</tr>
+<tr>
+<td style="text-align: left">$#</td>
+<td style="text-align: left">How many arguments were passed to the Bash script.</td>
+</tr>
+<tr>
+<td style="text-align: left">$@</td>
+<td style="text-align: left">All the arguments supplied to the Bash script.</td>
+</tr>
+<tr>
+<td style="text-align: left">$?</td>
+<td style="text-align: left">The exit status of the most recently run process.</td>
+</tr>
+<tr>
+<td style="text-align: left">$$</td>
+<td style="text-align: left">The process ID of the current script.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_3">NetCat</h3>
+
+<p>nc 瑞士军刀</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">nc -l 8888</td>
+<td style="text-align: left">在本机启动 ServerSocket 进程</td>
+</tr>
+</tbody>
+</table>
+
+<p>字符聊天</p>
+
+<ul>
+<li>服务端</li>
+<li>nc -l localhost port</li>
+<li>客户端</li>
+<li>nc localhost port</li>
+</ul>
+
+<p>传送文件</p>
+
+<ul>
+<li>服务端</li>
+<li>nc -l 1234 &gt; receive.txt // 重定向接收数据到文件</li>
+<li>客户端</li>
+<li>nc localhost 1234 &lt; send.txt // 从定向输入</li>
+</ul>
+
+<p>端口扫描<br/>
+nc ip -z port1-portn // 指定需要扫描的主机 ip 和端口区间<br/>
+nc -v -w s s1 -z 2000-4000<br/>
+-v 详细信息<br/>
+-w 连接超时<br/>
+-z 端口扫描</p>
+]]>
+    </content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[二叉搜索树转换成一个有序的双向链表]]></title>
+    <link href="ysmintor.github.io/15584922730010.html"/>
+    <updated>2019-05-22T10:31:13+08:00</updated>
+    <id>ysmintor.github.io/15584922730010.html</id>
+    <content type="html">
+<![CDATA[<p>以下函数用于将一颗二叉搜索树转换成一个有序的双向链表。要求不能创建任何新的节点，只能调整树种节点指针的指向。</p>
+
+<p>如输入下图中左边的二叉搜索树，则输出转换后的排序双向链表：<br/>
+   10<br/>
+/      \<br/>
+6      14<br/>
+/  \      /  \<br/>
+4   8  12  16<br/>
+转换成：<br/>
+4 &lt;=&gt; 6 &lt;=&gt; 8 &lt;=&gt; 10 &lt;=&gt; 12  &lt;=&gt; 14 &lt;=&gt; 16<br/>
+这个题目搜索了一下，我发现算是特别经典的题目了。对于没有练习过这种题目的还是很花费时间的。</p>
+
+<p>总体上可以归纳为<code>递归</code>与<code>非递归</code>两种，实现上对于<code>递归</code>类要考虑的边界条件要处理比<code>非递归</code>类要麻烦得多<br/>
+下面是<code>非递归</code>类的解答，没有经过测试用例，但大概思想主要就是二叉树的中序非递归遍历，并在遍历过程中去处理左右结点。</p>
+
+<hr/>
+
+<pre><code class="language-cpp">#include &lt;stack&gt;
+using namespace std;
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left, *right;
+};
+
+TreeNode *Convert(TreeNode *root)
+{
+    if (root == NULL)
+        return root;
+
+    TreeNode *listHead = NULL;
+    TreeNode *listLastNode = NULL;
+    TreeNode *pre = NULL;   // save the left most child as the left element for the root element
+
+    stack&lt;TreeNode *&gt; S;
+    while (root || !s.isempty())
+    {
+        while (root)
+        {
+            s.push(root);
+            root = root-&gt;left;
+        }
+        root = s.pop();
+        if (listHead == NULL)
+        {
+            listHead = root;
+            pre = root;
+        }
+        else
+        {
+            pre.right = root;
+            root.left = pre;
+            pre = root;
+        }
+        root = root-&gt;right;     // process right children
+    }
+    return listHead;
+}
+</code></pre>
+
+<p><a href="https://blog.csdn.net/u010005281/article/details/79657259" title="csdn">二叉搜索树与双向链表（Python）</a></p>
+
+<hr/>
+
+<p>__</p>
+]]>
+    </content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[幸运不是运气]]></title>
+    <link href="ysmintor.github.io/15584517368424.html"/>
+    <updated>2019-05-21T23:15:36+08:00</updated>
+    <id>ysmintor.github.io/15584517368424.html</id>
+    <content type="html">
+<![CDATA[<p>近期还负担着导师的任务，可不知为何竟然抽了一份简历出参加今日关条的面试，而自己本来是没有任何准备的，特别是对于我自己是喜欢提前准备的人，感觉到压力很大。对于这种极限的变动，真的不适应。</p>
+
+<p>另外又对六级进行刷分，也就准备了几天，有相当的部分准备起来很有压力。所以最近这几天的时间可以说特别地紧。</p>
+
+<p>由此，联想到这次面试机会到底是幸运呢？还是一个无谓地花费时间的活动。如果之前早就能够针对于面试去准备简历和相应刷题，那必然就是自己的幸运，可这个运气握把不住的原因就是自己的功夫没能够准备充足。</p>
+]]>
+    </content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tensorflow Lazy Loading Problem]]></title>

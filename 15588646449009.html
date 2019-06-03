@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+         KMeans 算法应用于 RGB 图像压缩 - York's Home 
+    </title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="个人小站，记录自己学习中的一些知识与心得。">
+
+    <link rel="stylesheet" type="text/css" href="asset/cuckoo.css">
+    <link rel="stylesheet" type="text/css" href="asset/main.css">
+    <link rel="stylesheet" type="text/css" href="asset/atom-one-light.css">
+
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="York's Home">
+
+    <script src="asset/highlight.pack.js"></script>
+<!--    <script>hljs.initHighlightingOnLoad();</script>-->
+</head>
+
+<body>
+    <header class="site-header cuckoo">
+        <div class="wrapper">
+            <a class="site-title" href="index.html">York's Home</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+                        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+                        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    
+                        <a class="page-link" href="index.html">Home</a>
+                    
+                        <a class="page-link" href="archives.html">Archives</a>
+                    
+                </div>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>
+ <div class="page-content cuckoo">
+    <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">KMeans 算法应用于 RGB 图像压缩</h1>
+                <div class="post-description">
+                    
+                </div>
+            </header>
+            <div class="post-content" itemprop="articleBody">
+                <p>KMeans算法可以应用于图像压缩，这种压缩实质上是一种有损压缩，实质上是将原本的色彩空间进行聚类，当所聚类的数据增长时，压缩后的质量也随之增加。</p>
+
+<p>关于聚类算法的的介绍和具体处理步聚就是在这里细讲，主要是讲解关于 KMeans 应用于图像压缩的实质和实现</p>
+
+<span id="more"></span><!-- more -->
+
+<p>从下图可以看到对一张原图使用 KMeans 使用聚类算法进行压缩时，首先要将原来的图像的所有像素放置到一个相同维度的容器，例如<code>Numpy</code>中的<code>Array</code>，然后进行进聚类，最终聚类的个数需要指定，聚类个数越大，压缩后的图像质量也就越好，但压缩比就降低，即压缩后的文件大小变化并不明显。注意在保存的压缩文件，压缩的图像坐标[x,y]所对应的并不是这个像素的 RGB 值，而是一个类似于指针的 Index。如下所的例子，原图所有像素聚类后的中心点有64个，那么可以用6bit 来表示（\(2^6=64\)），从例方向看每一列就对应一个聚类后的 RGB 颜色，压缩后的图像，图上的 K 就指向其中一列，表示取这个颜色，在恢复原图时就依据这个，把指向的具体的 RGB 值取出来。</p>
+
+<p>因此，压缩只是存储的压缩，在内存中进行显示的时候，还是需要还原，占用的内存空间和原图所占用的内存空间是一样大的。</p>
+
+<p><img src="media/15588646449009/15588648409263.jpg" alt="基本原理图"/></p>
+
+<p>下图是一张不同聚类个数后所得到的不同质量的图像<br/>
+<img src="media/15588646449009/15588656930757.jpg" alt="不同聚类值"/></p>
+
+<p>像下图这一张老虎图，是一张压缩后的图，一黑白图，注意这个位图不是彩色是因为像素代表的聚类后的颜色对应的<code>指针</code>。<br/>
+<img src="media/15588646449009/compressed_tiger.png" alt="compressed_tige"/></p>
+
+<hr/>
+
+<h1 id="toc_0">参考资料</h1>
+
+<p><a href="https://www.jianshu.com/p/594e9fc5db9a">Kmeans算法原理与应用-RGB图像压缩</a><br/>
+<a href="https://github.com/ysmintor/Image-compression-with-Kmeans-clustering">Image-compression-with-Kmeans-clustering</a></p>
+
+            </div>
+            <div>
+                
+                
+                
+            </div>
+        </article>
+    </div>
+</div>
+
+<script src="asset/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#footer').show()
+    })
+</script>
+  <footer id="footer" class="cuckoo page-footer" style="display: none">
+    <div class="wrapper">
+        <p>Designed and Written by <a href="mailto:forrestchang7@gmail.com">Jiayuan Zhang</a></p>
+    </div>
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+

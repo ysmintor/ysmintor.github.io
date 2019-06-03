@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+         个人常用 Linux 命令 - York's Home 
+    </title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="个人小站，记录自己学习中的一些知识与心得。">
+
+    <link rel="stylesheet" type="text/css" href="asset/cuckoo.css">
+    <link rel="stylesheet" type="text/css" href="asset/main.css">
+    <link rel="stylesheet" type="text/css" href="asset/atom-one-light.css">
+
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="York's Home">
+
+    <script src="asset/highlight.pack.js"></script>
+<!--    <script>hljs.initHighlightingOnLoad();</script>-->
+</head>
+
+<body>
+    <header class="site-header cuckoo">
+        <div class="wrapper">
+            <a class="site-title" href="index.html">York's Home</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+                        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+                        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    
+                        <a class="page-link" href="index.html">Home</a>
+                    
+                        <a class="page-link" href="archives.html">Archives</a>
+                    
+                </div>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>
+ <div class="page-content cuckoo">
+    <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">个人常用 Linux 命令</h1>
+                <div class="post-description">
+                    
+                </div>
+            </header>
+            <div class="post-content" itemprop="articleBody">
+                <p>uname, file, tar</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">xargs</td>
+<td style="text-align: left">将管道的输出内容合并成一行数据，使用空格分割</td>
+</tr>
+<tr>
+<td style="text-align: left">find .</td>
+<td style="text-align: left">grep txt</td>
+</tr>
+<tr>
+<td style="text-align: left">mount</td>
+<td style="text-align: left">挂载</td>
+</tr>
+<tr>
+<td style="text-align: left">mount /dev/cdrom /mnt/cdrom</td>
+<td style="text-align: left">挂载光驱到/mnt/cdrom 下</td>
+</tr>
+<tr>
+<td style="text-align: left">umount</td>
+<td style="text-align: left">解除挂载</td>
+</tr>
+<tr>
+<td style="text-align: left">umount /dev/cdrom</td>
+<td style="text-align: left">解除挂载</td>
+</tr>
+<tr>
+<td style="text-align: left">ps -Af</td>
+<td style="text-align: left">显示进程信息</td>
+</tr>
+<tr>
+<td style="text-align: left">cut -c num1-num2</td>
+<td style="text-align: left">剪切</td>
+</tr>
+<tr>
+<td style="text-align: left">cmd --help</td>
+<td style="text-align: left">查看帮助</td>
+</tr>
+<tr>
+<td style="text-align: left">man cmd</td>
+<td style="text-align: left">通过 查看 manual 文档</td>
+</tr>
+<tr>
+<td style="text-align: left">help</td>
+<td style="text-align: left">直接查看相应的文档</td>
+</tr>
+<tr>
+<td style="text-align: left">fdisk -l /dev/sda</td>
+<td style="text-align: left">查看分区表 sda1.2.3 是相应的分区</td>
+</tr>
+<tr>
+<td style="text-align: left">df</td>
+<td style="text-align: left">磁盘空间使用情况 disk free</td>
+</tr>
+<tr>
+<td style="text-align: left">df -ah</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">dd diskdump</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">dirname</td>
+<td style="text-align: left">查看文件夹)所在目录</td>
+</tr>
+<tr>
+<td style="text-align: left">basename</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">$(command)</td>
+<td style="text-align: left">命令</td>
+</tr>
+<tr>
+<td style="text-align: left">$ (xxx $(xxx))</td>
+<td style="text-align: left">嵌套命令</td>
+</tr>
+<tr>
+<td style="text-align: left">cd -P ..</td>
+<td style="text-align: left">Phisical, 非连接, 对于链接目录文件</td>
+</tr>
+<tr>
+<td style="text-align: left">cd -</td>
+<td style="text-align: left">后退</td>
+</tr>
+<tr>
+<td style="text-align: left">cd -n</td>
+<td style="text-align: left">后退到n步骤</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_0">重启</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">sudo reboot</td>
+<td style="text-align: left">重启</td>
+</tr>
+<tr>
+<td style="text-align: left">sudo shutdown -P now</td>
+<td style="text-align: left">关机，-p 关电源 -r reboot</td>
+</tr>
+<tr>
+<td style="text-align: left">sudo halt -p</td>
+<td style="text-align: left">关机，关电源</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_1">环境变量</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">echo $</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ $# -lt 1]</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ $# -gt 1]</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ -e xxx ]</td>
+<td style="text-align: left">是否存在</td>
+</tr>
+<tr>
+<td style="text-align: left">if[ $# -gt 1]</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">if[ -d file ]</td>
+<td style="text-align: left">如果file文件存在且是一个目录则为真</td>
+</tr>
+<tr>
+<td style="text-align: left">a;b</td>
+<td style="text-align: left">多行命令一起写，无逻辑</td>
+</tr>
+<tr>
+<td style="text-align: left">(a;b)</td>
+<td style="text-align: left">组合命令，只在当前目录执行，不切换</td>
+</tr>
+<tr>
+<td style="text-align: left">ls -al; cd /usr/;pwd</td>
+<td style="text-align: left">相应命令</td>
+</tr>
+<tr>
+<td style="text-align: left">(ls -al;cd ~;pwd)</td>
+<td style="text-align: left">在当前目录执行</td>
+</tr>
+</tbody>
+</table>
+
+<p>The square brackets ( [ ] ) in the if statement above are actually a reference to the command test. </p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Operator</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">! EXPRESSION</td>
+<td style="text-align: left">The EXPRESSION is false.</td>
+</tr>
+<tr>
+<td style="text-align: left">-n STRING</td>
+<td style="text-align: left">The length of STRING is greater than zero.</td>
+</tr>
+<tr>
+<td style="text-align: left">-z STRING</td>
+<td style="text-align: left">The lengh of STRING is zero (ie it is empty).</td>
+</tr>
+<tr>
+<td style="text-align: left">STRING1 = STRING2</td>
+<td style="text-align: left">STRING1 is equal to STRING2</td>
+</tr>
+<tr>
+<td style="text-align: left">STRING1 != STRING2</td>
+<td style="text-align: left">STRING1 is not equal to STRING2</td>
+</tr>
+<tr>
+<td style="text-align: left">INTEGER1 -eq INTEGER2</td>
+<td style="text-align: left">INTEGER1 is numerically equal to INTEGER2</td>
+</tr>
+<tr>
+<td style="text-align: left">INTEGER1 -gt INTEGER2</td>
+<td style="text-align: left">INTEGER1 is numerically greater than INTEGER2</td>
+</tr>
+<tr>
+<td style="text-align: left">INTEGER1 -lt INTEGER2</td>
+<td style="text-align: left">INTEGER1 is numerically less than INTEGER2</td>
+</tr>
+<tr>
+<td style="text-align: left">-d FILE</td>
+<td style="text-align: left">FILE exists and is a directory.</td>
+</tr>
+<tr>
+<td style="text-align: left">-e FILE</td>
+<td style="text-align: left">FILE exists.</td>
+</tr>
+<tr>
+<td style="text-align: left">-r FILE</td>
+<td style="text-align: left">FILE exists and the read permission is granted.</td>
+</tr>
+<tr>
+<td style="text-align: left">-s FILE</td>
+<td style="text-align: left">FILE exists and it&#39;s size is greater than zero (ie. it is not empty).</td>
+</tr>
+<tr>
+<td style="text-align: left">-w FILE</td>
+<td style="text-align: left">FILE exists and the write permission is granted.</td>
+</tr>
+<tr>
+<td style="text-align: left">-x FILE</td>
+<td style="text-align: left">FILE exists and the execute permission is granted.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_2">Shell 变量</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">$0</td>
+<td style="text-align: left">The name of the Bash script.</td>
+</tr>
+<tr>
+<td style="text-align: left">$1 - $9</td>
+<td style="text-align: left">The first 9 arguments to the Bash script. (As mentioned above.)</td>
+</tr>
+<tr>
+<td style="text-align: left">$#</td>
+<td style="text-align: left">How many arguments were passed to the Bash script.</td>
+</tr>
+<tr>
+<td style="text-align: left">$@</td>
+<td style="text-align: left">All the arguments supplied to the Bash script.</td>
+</tr>
+<tr>
+<td style="text-align: left">$?</td>
+<td style="text-align: left">The exit status of the most recently run process.</td>
+</tr>
+<tr>
+<td style="text-align: left">$$</td>
+<td style="text-align: left">The process ID of the current script.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_3">NetCat</h3>
+
+<p>nc 瑞士军刀</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">命令</th>
+<th style="text-align: left">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">nc -l 8888</td>
+<td style="text-align: left">在本机启动 ServerSocket 进程</td>
+</tr>
+</tbody>
+</table>
+
+<p>字符聊天</p>
+
+<ul>
+<li>服务端</li>
+<li>nc -l localhost port</li>
+<li>客户端</li>
+<li>nc localhost port</li>
+</ul>
+
+<p>传送文件</p>
+
+<ul>
+<li>服务端</li>
+<li>nc -l 1234 &gt; receive.txt // 重定向接收数据到文件</li>
+<li>客户端</li>
+<li>nc localhost 1234 &lt; send.txt // 从定向输入</li>
+</ul>
+
+<p>端口扫描<br/>
+nc ip -z port1-portn // 指定需要扫描的主机 ip 和端口区间<br/>
+nc -v -w s s1 -z 2000-4000<br/>
+-v 详细信息<br/>
+-w 连接超时<br/>
+-z 端口扫描</p>
+
+            </div>
+            <div>
+                
+                
+                
+            </div>
+        </article>
+    </div>
+</div>
+
+<script src="asset/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#footer').show()
+    })
+</script>
+  <footer id="footer" class="cuckoo page-footer" style="display: none">
+    <div class="wrapper">
+        <p>Designed and Written by <a href="mailto:forrestchang7@gmail.com">Jiayuan Zhang</a></p>
+    </div>
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+

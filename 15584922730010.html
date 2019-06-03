@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+         二叉搜索树转换成一个有序的双向链表 - York's Home 
+    </title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="个人小站，记录自己学习中的一些知识与心得。">
+
+    <link rel="stylesheet" type="text/css" href="asset/cuckoo.css">
+    <link rel="stylesheet" type="text/css" href="asset/main.css">
+    <link rel="stylesheet" type="text/css" href="asset/atom-one-light.css">
+
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="York's Home">
+
+    <script src="asset/highlight.pack.js"></script>
+<!--    <script>hljs.initHighlightingOnLoad();</script>-->
+</head>
+
+<body>
+    <header class="site-header cuckoo">
+        <div class="wrapper">
+            <a class="site-title" href="index.html">York's Home</a>
+            <nav class="site-nav">
+                <a href="#" class="menu-icon">
+                    <svg viewBox="0 0 18 15">
+                        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+                        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+                        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+                    </svg>
+                </a>
+                <div class="trigger">
+                    
+                        <a class="page-link" href="index.html">Home</a>
+                    
+                        <a class="page-link" href="archives.html">Archives</a>
+                    
+                </div>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>
+ <div class="page-content cuckoo">
+    <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">二叉搜索树转换成一个有序的双向链表</h1>
+                <div class="post-description">
+                    
+                </div>
+            </header>
+            <div class="post-content" itemprop="articleBody">
+                <p>以下函数用于将一颗二叉搜索树转换成一个有序的双向链表。要求不能创建任何新的节点，只能调整树种节点指针的指向。</p>
+
+<p>如输入下图中左边的二叉搜索树，则输出转换后的排序双向链表：<br/>
+   10<br/>
+/      \<br/>
+6      14<br/>
+/  \      /  \<br/>
+4   8  12  16<br/>
+转换成：<br/>
+4 &lt;=&gt; 6 &lt;=&gt; 8 &lt;=&gt; 10 &lt;=&gt; 12  &lt;=&gt; 14 &lt;=&gt; 16<br/>
+这个题目搜索了一下，我发现算是特别经典的题目了。对于没有练习过这种题目的还是很花费时间的。</p>
+
+<p>总体上可以归纳为<code>递归</code>与<code>非递归</code>两种，实现上对于<code>递归</code>类要考虑的边界条件要处理比<code>非递归</code>类要麻烦得多<br/>
+下面是<code>非递归</code>类的解答，没有经过测试用例，但大概思想主要就是二叉树的中序非递归遍历，并在遍历过程中去处理左右结点。</p>
+
+<hr/>
+
+<pre><code class="language-cpp">#include &lt;stack&gt;
+using namespace std;
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left, *right;
+};
+
+TreeNode *Convert(TreeNode *root)
+{
+    if (root == NULL)
+        return root;
+
+    TreeNode *listHead = NULL;
+    TreeNode *listLastNode = NULL;
+    TreeNode *pre = NULL;   // save the left most child as the left element for the root element
+
+    stack&lt;TreeNode *&gt; S;
+    while (root || !s.isempty())
+    {
+        while (root)
+        {
+            s.push(root);
+            root = root-&gt;left;
+        }
+        root = s.pop();
+        if (listHead == NULL)
+        {
+            listHead = root;
+            pre = root;
+        }
+        else
+        {
+            pre.right = root;
+            root.left = pre;
+            pre = root;
+        }
+        root = root-&gt;right;     // process right children
+    }
+    return listHead;
+}
+</code></pre>
+
+<p><a href="https://blog.csdn.net/u010005281/article/details/79657259" title="csdn">二叉搜索树与双向链表（Python）</a></p>
+
+<hr/>
+
+<p>__</p>
+
+            </div>
+            <div>
+                
+                
+                
+            </div>
+        </article>
+    </div>
+</div>
+
+<script src="asset/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#footer').show()
+    })
+</script>
+  <footer id="footer" class="cuckoo page-footer" style="display: none">
+    <div class="wrapper">
+        <p>Designed and Written by <a href="mailto:forrestchang7@gmail.com">Jiayuan Zhang</a></p>
+    </div>
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
